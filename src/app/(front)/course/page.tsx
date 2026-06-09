@@ -1,5 +1,5 @@
 import FeaturesCourse from "@/components/features-course";
-import { getCourses } from "@/lib/api/course";
+import { getCourses } from "@/services/course-service";
 import { connection } from "next/server";
 
 // http://localhost:3000/course

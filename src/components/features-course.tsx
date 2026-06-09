@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Course } from "@/lib/api/course";
+import type { Course } from "@/services/course-service";
 
 type Props = {
   courses: Course[];
