@@ -1,18 +1,15 @@
 import FeaturesCourse from "@/components/features-course";
+import { getCourses } from "@/lib/api/course";
+import { connection } from "next/server";
 
 // http://localhost:3000/course
 export default async function CoursePage() {
-  const response = await fetch('https://api.codingthailand.com/api/course');
-  const courseResponse = await response.json();
+  await connection();
+  const courses = await getCourses();
 
   return (
     <main>
-      {/* {
-        JSON.stringify(courseResponse.data)
-      } */}
-      {
-        courseResponse.data.length > 0 && <FeaturesCourse courses={courseResponse.data} />
-      }
+      {courses.length > 0 && <FeaturesCourse courses={courses} />}
     </main>
   );
 }
