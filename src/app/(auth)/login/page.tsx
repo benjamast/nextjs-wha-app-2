@@ -53,7 +53,7 @@ export default function LoginForm() {
          }, {
             onSuccess: () => {
               alert('เข้าระบบสำเร็จ');
-              router.replace('/');
+              router.replace('/?welcome=true');
             },
             onError: (ctx) => {
               alert(JSON.stringify(ctx.error));

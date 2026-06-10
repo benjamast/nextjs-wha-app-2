@@ -4,6 +4,7 @@ import { Poppins, Nunito, Space_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "../globals.css";
 import Navbar from "@/components/navbar";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Navbar />
         </Suspense>
         {children}
+        <Toaster richColors />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    "intructions": ["nextjs-wha-app-starter/docs/typescript-guidelines.md"],
     "formatter": true,
     "lsp": true,
     "permission": {

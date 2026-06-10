@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { WelcomeBanner } from "./components/welcome-banner";
 import { ArrowUpRight, ShoppingBag, Star, Truck, Shield, RefreshCw, Sparkles, Heart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,7 @@ function StarRating({ rating }: { rating: number }) {
 export default function Home() {
   return (
     <div className="bg-background">
+      <WelcomeBanner />
       {/* === HERO === */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-16 md:py-24 lg:py-32">
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 sm:px-6 lg:px-8">
