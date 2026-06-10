@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+"mcp": {
+    "next-devtools": {
+      "enabled": true,
+      "type": "local",
+      "command": "npx",
+      "args": [
+        "-y",
+        "next-devtools-mcp@latest"  "instructions": [
+    "docs/typescript-guidelines.md"
+  ],
+  "mcp": {
+  "next-devtools": {
+    "enabled": true,
+    "type": "local",
+    "command": "npx",
+    "args": [
+      "-y",
+      "next-devtools-mcp@latest"
+    ]
+  
+}
+  },
+  "formatter": true,
+  "lsp": true,
+  "permission": {
+    "bash": {
+      "git add *": "ask",
+      "git commit *": "ask",
+      "rm *": "deny"
+    }
+  }
+}

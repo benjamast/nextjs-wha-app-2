@@ -53,7 +53,7 @@ export default function LoginForm() {
          }, {
             onSuccess: () => {
               alert('เข้าระบบสำเร็จ');
-              router.replace('/?welcome=true');
+              router.replace('/');
             },
             onError: (ctx) => {
               alert(JSON.stringify(ctx.error));
@@ -120,7 +120,7 @@ export default function LoginForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-3">
         <Button type="submit" form="form-login" className="w-full">
-          เข้าสู่ระบบเทส
+          เข้าสู่ระบบ
         </Button>
         <p className="text-center text-sm text-muted-foreground">
           ยังไม่มีบัญชี?{" "}

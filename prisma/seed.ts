@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "../generated/prisma/client";
+import { hashPassword } from "@better-auth/utils/password";
 
 const adapter = new PrismaMariaDb(process.env.DATABASE_URL!);
 const prisma = new PrismaClient({ adapter });
@@ -15,9 +16,48 @@ async function main() {
   await prisma.products.deleteMany();
   await prisma.customers.deleteMany();
   await prisma.categories.deleteMany();
+  await prisma.account.deleteMany();
+  await prisma.session.deleteMany();
+  await prisma.user.deleteMany();
+  await prisma.verification.deleteMany();
+
+  await prisma.$executeRawUnsafe("ALTER TABLE categories AUTO_INCREMENT = 1");
+  await prisma.$executeRawUnsafe("ALTER TABLE customers AUTO_INCREMENT = 1");
+  await prisma.$executeRawUnsafe("ALTER TABLE orders AUTO_INCREMENT = 1");
+  await prisma.$executeRawUnsafe("ALTER TABLE order_items AUTO_INCREMENT = 1");
+  await prisma.$executeRawUnsafe("ALTER TABLE products AUTO_INCREMENT = 1");
+  await prisma.$executeRawUnsafe("ALTER TABLE product_images AUTO_INCREMENT = 1");
   console.log("🧹 Cleared existing data");
 
-  // ── 1. Categories ──
+  // ── 1. Admin User (for better-auth login) ──
+  const adminEmail = "benjamast@wha-digital.com";
+  const adminPassword = "Admin1234!";
+  const hashed = await hashPassword(adminPassword);
+  const adminId = crypto.randomUUID();
+
+  await prisma.user.create({
+    data: {
+      id: adminId,
+      name: "Admin",
+      email: adminEmail,
+      emailVerified: true,
+      role: "admin",
+    },
+  });
+
+  await prisma.account.create({
+    data: {
+      id: crypto.randomUUID(),
+      accountId: adminEmail,
+      providerId: "credential",
+      userId: adminId,
+      password: hashed,
+    },
+  });
+
+  console.log(`✅ Created admin user: ${adminEmail} / ${adminPassword}`);
+
+  // ── 2. Categories ──
   const categoryData = [
     { name: "สมาร์ทโฟน" },
     { name: "แล็ปท็อป" },
@@ -29,7 +69,7 @@ async function main() {
   await prisma.categories.createMany({ data: categoryData });
   console.log(`✅ Created ${categoryData.length} categories`);
 
-  // ── 2. Products ──
+  // ── 3. Products ──
   const productData = [
     { name: "iPhone 16 Pro", description: "สมาร์ทโฟน Apple จอ 6.3 นิ้ว ชิป A18 Pro", price: 45900.0, category_id: 1 },
     { name: "Samsung Galaxy S25", description: "สมาร์ทโฟน Samsung จอ 6.2 นิ้ว ชิป Snapdragon 8 Elite", price: 32900.0, category_id: 1 },
@@ -41,7 +81,7 @@ async function main() {
   await prisma.products.createMany({ data: productData });
   console.log(`✅ Created ${productData.length} products`);
 
-  // ── 3. Product Images ──
+  // ── 4. Product Images ──
   const productImageData = [
     { product_id: 1, image_name: "iphone16pro-front.jpg" },
     { product_id: 1, image_name: "iphone16pro-back.jpg" },
@@ -53,7 +93,7 @@ async function main() {
   await prisma.product_images.createMany({ data: productImageData });
   console.log(`✅ Created ${productImageData.length} product images`);
 
-  // ── 4. Customers ──
+  // ── 5. Customers ──
   const customerData = [
     { name: "สมชาย ใจดี", address: "123 ถ.สุขุมวิท แขวงคลองเตย เขตคลองเตย กรุงเทพฯ 10110", phone: "081-234-5678" },
     { name: "สมหญิง รักเรียน", address: "456 ถ.เชียงใหม่-ลำปาง ต.ช้างเผือก อ.เมือง เชียงใหม่ 50300", phone: "089-876-5432" },
@@ -65,7 +105,7 @@ async function main() {
   await prisma.customers.createMany({ data: customerData });
   console.log(`✅ Created ${customerData.length} customers`);
 
-  // ── 5. Orders ──
+  // ── 6. Orders ──
   const orderData = [
     { date: new Date("2026-06-01T09:30:00"), customer_id: 1, status: "delivered" as const, total_amount: 100790.0 },
     { date: new Date("2026-06-01T14:15:00"), customer_id: 2, status: "delivered" as const, total_amount: 53890.0 },
@@ -77,7 +117,7 @@ async function main() {
   await prisma.orders.createMany({ data: orderData });
   console.log(`✅ Created ${orderData.length} orders`);
 
-  // ── 6. Order Items ──
+  // ── 7. Order Items ──
   const orderItemData = [
     // Order #1: สมชาย → iPhone 16 Pro x2 + AirPods Pro 2 x1 = 100,790
     { order_id: 1, product_id: 1, quantity: 2, price: 45900.0 },
