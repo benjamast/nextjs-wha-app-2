@@ -21,6 +21,10 @@
             "git add *": "ask",
             "git commit *": "ask",
             "rm *": "deny"
+        },
+        "skill": {
+            "*": "allow",
+            "vercel-*": "ask"
         }
     }
 }
