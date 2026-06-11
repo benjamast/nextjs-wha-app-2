@@ -15,6 +15,7 @@ export default function Hero() {
         >
           <Link href="#">
             Just released v1.0.0 <ArrowUpRight className="ml-1 size-4" />
+            Welcome to WHA 2026
           </Link>
         </Badge>
 
