@@ -1,14 +1,6 @@
 import CartButton from "@/app/(front)/components/CartButton";
+import type { ProductCardItem } from "@/types/product";
 import Image from "next/image";
-
-export type ProductCardItem = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  categoryName: string;
-  imageName: string | null;
-};
 
 type Props = {
   products: ProductCardItem[];

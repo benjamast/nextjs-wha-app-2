@@ -1,0 +1,101 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - img "โลโก้ Next.js" [ref=e4]
+      - navigation "Main" [ref=e5]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "หน้าหลัก" [ref=e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e10]:
+            - link "หลักสูตร" [ref=e11] [cursor=pointer]:
+              - /url: /course
+          - listitem [ref=e12]:
+            - link "เกี่ยวกับเรา" [ref=e13] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e14]:
+            - link "สินค้า" [ref=e15] [cursor=pointer]:
+              - /url: /product
+          - listitem [ref=e16]:
+            - link "ติดต่อเรา" [ref=e17] [cursor=pointer]:
+              - /url: /contact
+      - link "0 ชิ้น" [ref=e18] [cursor=pointer]:
+        - /url: /cart
+        - generic [ref=e19]:
+          - img
+          - generic [ref=e20]: "0"
+          - text: ชิ้น
+      - generic [ref=e21]:
+        - link "เข้าสู่ระบบ" [ref=e22] [cursor=pointer]:
+          - /url: /login
+        - link "สมัครสมาชิก" [ref=e23] [cursor=pointer]:
+          - /url: /signup
+  - main [ref=e24]:
+    - generic [ref=e26]:
+      - heading "หลักสูตรทั้งหมด" [level=2] [ref=e27]
+      - paragraph [ref=e28]: No complex configs. Just copy, paste, and start building
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img "HTML 5" [ref=e32]
+          - generic [ref=e33]:
+            - text: HTML 5
+            - paragraph [ref=e34]: พัฒนาเว็บไซต์ด้วย HTML 5
+        - generic [ref=e35]:
+          - img "CSS 3" [ref=e37]
+          - generic [ref=e38]:
+            - text: CSS 3
+            - paragraph [ref=e39]: พัฒนาและตกแต่งเว็บไซต์ด้วย CSS
+        - generic [ref=e40]:
+          - img "PHP Basic" [ref=e42]
+          - generic [ref=e43]:
+            - text: PHP Basic
+            - paragraph [ref=e44]: เขียนโปรแกรมด้วยภาษา PHP พื้นฐาน
+        - generic [ref=e45]:
+          - img "PHP using PDO" [ref=e47]
+          - generic [ref=e48]:
+            - text: PHP using PDO
+            - paragraph [ref=e49]: เขียน PHP เชื่อมต่อทุกฐานข้อมูลด้วย PDO
+        - generic [ref=e50]:
+          - img "Tools & Software" [ref=e52]
+          - generic [ref=e53]:
+            - text: Tools & Software
+            - paragraph [ref=e54]: เตรียมความพร้อมก่อนเขียนโปรแกรม
+        - generic [ref=e55]:
+          - img "JavaScript Basic" [ref=e57]
+          - generic [ref=e58]:
+            - text: JavaScript Basic
+            - paragraph [ref=e59]: พัฒนาเว็บไซต์ด้วยภาษา JavaScript
+        - generic [ref=e60]:
+          - img "jQuery" [ref=e62]
+          - generic [ref=e63]:
+            - text: jQuery
+            - paragraph [ref=e64]: พัฒนาเว็บไซต์ด้วย jQuery
+        - generic [ref=e65]:
+          - img "Laravel Basic" [ref=e67]
+          - generic [ref=e68]:
+            - text: Laravel Basic
+            - paragraph [ref=e69]: พัฒนา Web App ด้วย Laravel Framework
+        - generic [ref=e70]:
+          - img "PHP and MySQL" [ref=e72]
+          - generic [ref=e73]:
+            - text: PHP and MySQL
+            - paragraph [ref=e74]: สร้างเว็บไซต์ด้วย PHP ฐานข้อมูล MySQL
+        - generic [ref=e75]:
+          - img "SQL" [ref=e77]
+          - generic [ref=e78]:
+            - text: SQL
+            - paragraph [ref=e79]: ภาษา SQL สำหรับจัดการฐานข้อมูล
+        - generic [ref=e80]:
+          - img "Laravel Advanced" [ref=e82]
+          - generic [ref=e83]:
+            - text: Laravel Advanced
+            - paragraph [ref=e84]: พัฒนา Web App ด้วย Laravel Framework Advanced
+        - generic [ref=e85]:
+          - img "SQL for Developer" [ref=e87]
+          - generic [ref=e88]:
+            - text: SQL for Developer
+            - paragraph [ref=e89]: ภาษา SQL สำหรับจัดการฐานข้อมูล advanced
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e95] [cursor=pointer]:
+    - img [ref=e96]
+  - alert [ref=e99]

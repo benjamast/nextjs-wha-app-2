@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import type { ProductCardItem } from "@/components/features-product";
+import type { ProductCardItem } from "@/types/product";
 import { useCartStore } from "@/lib/cart-store";
 import { ChevronRight } from "lucide-react";
 

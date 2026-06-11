@@ -1,11 +1,7 @@
 import Image from "next/image";
-import type { Course } from "@/services/course-service";
+import type { CourseFeatureProps } from "@/types/course";
 
-type Props = {
-  courses: Course[];
-}
-
-const FeaturesCourse = ({ courses }: Props) => {
+const FeaturesCourse = ({ courses }: CourseFeatureProps) => {
   return (
     <div className="flex min-h-screen items-center justify-center px-6 py-20">
       <div className="w-full grow sm:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg)">
