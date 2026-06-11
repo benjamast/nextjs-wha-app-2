@@ -112,10 +112,11 @@ function RevenueChart({ data, loading, period, onPeriodChange, error, onRetry }:
                     boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
                     fontSize: 13,
                   }}
-                  formatter={(_value: number, name: string) => {
-                    if (name === "revenue") return [currencyFormatter.format(_value), "รายได้"]
-                    return [_value, "ออเดอร์"]
-                  }}
+                  formatter={((value: unknown, name: string) => {
+                    const num = Number(value ?? 0)
+                    if (name === "revenue") return [currencyFormatter.format(num), "รายได้"]
+                    return [num, "ออเดอร์"]
+                  }) as any}
                   labelFormatter={(label) => `วันที่ ${label}`}
                 />
                 <Area

@@ -1,9 +1,11 @@
+import { Suspense } from "react"
 import { auth } from "@/lib/auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
+import { Spinner } from "@/components/ui/spinner"
 import { ProductsClient } from "./products-client"
 
-export default async function ProductsPage() {
+async function ProductsGuard() {
   const session = await auth.api.getSession({
     headers: await headers(),
   })
@@ -13,4 +15,12 @@ export default async function ProductsPage() {
   }
 
   return <ProductsClient />
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center py-12"><Spinner className="size-6" /></div>}>
+      <ProductsGuard />
+    </Suspense>
+  )
 }

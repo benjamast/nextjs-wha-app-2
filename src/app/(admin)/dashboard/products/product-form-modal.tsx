@@ -43,7 +43,7 @@ interface ProductFormModalProps {
 function ProductFormModal({ open, onOpenChange, product, categories, onSaved }: ProductFormModalProps) {
   const [isPending, startTransition] = useTransition()
   const form = useForm<ProductFormValues>({
-    resolver: zodResolver(productSchema),
+    resolver: zodResolver(productSchema) as any,
     defaultValues,
   })
 
