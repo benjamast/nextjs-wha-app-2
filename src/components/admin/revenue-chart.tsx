@@ -10,6 +10,7 @@ import {
   Area,
   AreaChart,
 } from "recharts"
+
 import { Spinner } from "@/components/ui/spinner"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -37,6 +38,15 @@ function RevenueChart({ data, loading, period, onPeriodChange, error, onRetry }:
     () => data.reduce((sum, p) => sum + p.revenue, 0),
     [data]
   )
+
+  const tooltipFormatter = (
+    value: unknown,
+    name: unknown
+  ): React.ReactNode => {
+    const num = Number(value ?? 0)
+    if (name === "revenue") return [currencyFormatter.format(num), "รายได้"]
+    return [num, "ออเดอร์"]
+  }
 
   if (error) {
     return (
@@ -112,11 +122,7 @@ function RevenueChart({ data, loading, period, onPeriodChange, error, onRetry }:
                     boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
                     fontSize: 13,
                   }}
-                  formatter={((value: unknown, name: string) => {
-                    const num = Number(value ?? 0)
-                    if (name === "revenue") return [currencyFormatter.format(num), "รายได้"]
-                    return [num, "ออเดอร์"]
-                  }) as any}
+                  formatter={tooltipFormatter}
                   labelFormatter={(label) => `วันที่ ${label}`}
                 />
                 <Area
